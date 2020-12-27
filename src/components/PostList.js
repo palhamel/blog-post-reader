@@ -1,17 +1,16 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { fetchPosts } from "../actions/index.js";
 
-export class PostList extends Component {
+// class based comp to use lifecycle methods:
+class PostList extends Component {
+  componentDidMount() {
+    this.props.fetchPosts();
+  }
+
   render() {
-    return (
-      <div>
-        Post List
-      </div>
-    )
+    return <div>Post List</div>;
   }
 }
 
-export default PostList
-
-
-
-// class based comp
+export default connect(null, { fetchPosts })(PostList);
